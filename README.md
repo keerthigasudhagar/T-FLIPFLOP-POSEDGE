@@ -27,16 +27,48 @@ Here, Qtt & Qt+1t+1 are present state & next state respectively. So, T flip-flop
 From the above characteristic table, we can directly write the next state equation as Q(t+1)=T′Q(t)+TQ(t)′ ⇒Q(t+1)=T⊕Q(t)
 
 **Procedure**
+1.Define Module: Define a Verilog module for the T flip-flop with inputs (T, CLK) and outputs (Q, Q_bar).
 
-/* write all the steps invloved */
+2.Declare Inputs and Outputs: Declare input and output ports for the module.
+
+3.Implement Flip-Flop Logic: Write Verilog code to implement the T flip-flop logic based on its functional table. Use a synchronous always @(posedge CLK) block to trigger the flip-flop on the positive edge of the clock signal.
+
+4.Simulate Using Testbench: Write a Verilog testbench to simulate the behavior of the T flip-flop under different input conditions.
+
+5.Apply Input Stimuli: In the testbench, apply various combinations of input stimuli (T, CLK) to cover all possible input states.
+
+6.Verify Output Behavior: Verify that the output behavior of the T flip-flop matches the expected behavior defined by its functional table.
+
 
 **PROGRAM**
+```
+DEVOLOPED BY :Keerthika.S
+REGISTER NO. : 212223040093
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module tflipflop( input clk, rst_n, input t,
+output reg q,
+output q_bar
+);
+always@(posedge clk) 
+begin 
+if(!rst_n)
+q<=0;
+else 
+begin
+q<=(t?~q:q);
+end
+end
+assign q_bar = ~q;
+endmodule
+
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![327078950-d472c5ed-21b4-42a4-992a-c34db95135a7](https://github.com/keerthigasudhagar/T-FLIPFLOP-POSEDGE/assets/163229129/e09801e4-40ea-43b7-8750-00f91051ff33)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![327079003-e9c1f833-37f4-4770-ade7-e5442cd4a740](https://github.com/keerthigasudhagar/T-FLIPFLOP-POSEDGE/assets/163229129/b31a395a-a014-44a1-9568-3bb2bd9c73e3)
 
 **RESULTS**
+
+Thus the program to implement a T flipflop using verilog and validating their functionality using their functional tables is successfully completed.
